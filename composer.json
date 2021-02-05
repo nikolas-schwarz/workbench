@@ -1,0 +1,23 @@
+{
+    "name": "nikolas-schwarz/workbench",
+    "description": "My personal Project foundation build with psr-middleware, psr-events, plugin and smarty support.",
+    "type": "project",
+    "homepage": "https://github.com/nikolas-schwarz/workbench",
+    "readme": "https://github.com/nikolas-schwarz/workbench/blob/main/README.md",
+    "version": "dev-1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikolas Schwarz",
+            "email": "nikolas.schwarz@evolut.solutions"
+        }
+    ],
+    "require": {
+        "psr/log": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Workbench\\": "src/"
+        }
+    }
+}
