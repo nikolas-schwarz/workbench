@@ -63,15 +63,15 @@ final class ExtensionTest extends TestCase
                 },
                 "autoload": {
                     "psr-4": {
-                        "Workbench\\Extensions\\Example2\\Controller\\": "Classes/Controller/",
-                        "Workbench\\Extensions\\Example2\\Views\\": "Classes/Views/"
+                        "Workbench\\Extensions\\Example\\Controller\\": "Classes/Controller/",
+                        "Workbench\\Extensions\\Example\\Views\\": "Classes/Views/"
                     }
                 },
                 "extra": {
                     "config": {
                         "enabled": false,
                         "path": {
-                            "/extension/hello2/world/": "Workbench\\Extensions\\Example2\\Controller\\HelloWorldController::IndexAction",
+                            "/extension/hello2/world/": "Workbench\\Extensions\\Example\\Controller\\HelloWorldController::IndexAction",
                             "/extension/hello2/world2/": "HelloWorldController::IndexAction"
                         }
                     }
@@ -83,7 +83,7 @@ final class ExtensionTest extends TestCase
     public function testCanBeCreatedFromJsonFile(): void {
         $this->assertInstanceOf(
             Extension::class,
-            Extension::fromJsonFile(System::getExtensionsDir() . '/Example2/composer.json')
+            Extension::fromJsonFile(System::getExtensionsDir() . '/Example/composer.json')
         );
     }
 
