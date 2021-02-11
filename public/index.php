@@ -1,14 +1,20 @@
-<?php
-
-require __DIR__ . '/../vendor/autoload.php';
+<?php declare(strict_types=1);
 
 /**
  * Workbench 
  *
  * My personal Project foundation build with 
- * psr-middleware, psr-events, plugin and smarty support.
+ * psr-standards, extensions and template support.
+ * 
+ * This framework is mainly based on a bunch of patterns that
+ * helps building a solid foundation for my projects. The main
+ * idea is, that every project is a collection of extensions, 
+ * which form the resulting website, blog, web application. 
+ * All with extensibility from the start in mind. This may help
+ * you to collaborate with others on your project, or maybe it
+ * helps you to understand some common patterns or solutions.
  *
- * PHP version 7.4 or higher
+ * PHP version 8.0 or higher
  *
  * LICENSE: MIT
  *
@@ -20,10 +26,17 @@ require __DIR__ . '/../vendor/autoload.php';
  * @link       https://github.com/nikolas-schwarz/workbench
  */
 
-use Workbench\App;
+require __DIR__ . '/../vendor/autoload.php';
 
+// use the workbench namespace
+use Workbench\Core\App;
+use Workbench\Manager\ExtensionManager;
+
+// create a new application
 $app = new App();
 
-// Testing
-print_r($app->getVersion());
-print_r($app->getName());
+// register the extension manager singleton
+$app->registerManager(ExtensionManager::getInstance());
+
+// run the application
+$app->run();

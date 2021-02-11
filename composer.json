@@ -6,6 +6,9 @@
     "readme": "https://github.com/nikolas-schwarz/workbench/blob/main/README.md",
     "version": "dev-1.0.0",
     "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
     "authors": [
         {
             "name": "Nikolas Schwarz",
@@ -13,11 +16,43 @@
         }
     ],
     "require": {
+        "php": "^8.0",
+        "psr/cache": "^3.0",
+        "psr/container": "^1.0",
+        "psr/event-dispatcher": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0",
+        "psr/http-server-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/link": "^2.0",
         "psr/log": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "Workbench\\": "src/"
+            "Workbench\\": "src/",
+            "Workbench\\Themes\\": "themes/",
+            "Workbench\\Extensions\\": "extensions/"
+        }
+    },
+    "extra": {
+        "workbench": {
+            "name": "workbench framework",
+            "description": "My personal Project foundation build with psr-standards, extensions and template support."
+        },
+        "extensions":{
+            "helloworld": {
+                "name": "helloworld",
+                "description": "Example Plugin for the plugin system of the workbench framework",
+                "type": "plugin",
+                "config": {
+                    "path": {
+                        "/extension/hello/world/": "Workbench\\Extensions\\Example\\Controller\\HelloWorldController::IndexAction"
+                    }
+                }
+            } 
         }
     }
 }

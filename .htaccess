@@ -1,0 +1,6 @@
+#
+# Set Context to Development
+# No need to upload htaccess to server
+# Default Context = Production
+# --------------------------------------------------
+SetEnv WORKBENCH_CONTEXT Development

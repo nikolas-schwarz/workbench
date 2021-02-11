@@ -1,4 +1,47 @@
 #!/bin/sh
 
-cd public
-php -S localhost:1337
+# Any subsequent commands which fail will cause the shell script to exit immediately
+set -e;
+
+# Reset
+Clear='\e[0m'
+NL='\n'
+
+# helper function to print help text
+helpFunction()
+{
+    printf ""$NL
+    printf "Usage: $0 run <commmand>"$NL
+    printf ""$NL
+    printf "run:\t runs given comment like dev for development server or test for phpunit"$NL
+    #printf ""$NL
+    #printf "clear cache:\t clears main cache"$NL
+    printf ""$NL
+    exit 1 # Exit script after printing help
+}
+
+# Print helpFunction in case parameters are empty
+if [ -z "$1" ]
+then
+    echo "Some or all of the parameters are empty";
+    helpFunction
+fi
+
+while [ $# -ne 0 ]  # ne = not equal
+do
+    case $1 in
+        run)
+            case $2 in
+                dev)
+                    cd public && php -S localhost:1337
+                ;;
+                test)
+                    ./vendor/bin/phpunit --testdox tests
+                ;;
+            esac
+            shift;;
+        clear) echo "Option clear" $2; shift;;
+        help ) helpFunction ;; # Print helpFunction in case parameter is non-existent
+    esac
+    shift
+done
